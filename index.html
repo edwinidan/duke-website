@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Duke's Garage - Find Your Drive, Backed by Our Promise</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-dark: #1a0f0f;
+            --secondary-dark: #2d1f1f;
+            --accent-burgundy: #6b1d3c;
+            --accent-silver: #c8d0d8;
+            --accent-chrome: #e8eef3;
+            --warm-brick: #b85a3a;
+            --text-light: #f4f4f4;
+            --text-gray: #a8b2c1;
+            --border-color: rgba(200, 208, 216, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--primary-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 3rem 0;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: 0;
+        }
+
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(10, 15, 26, 0.05) 0%, rgba(10, 15, 26, 0.15) 100%);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, rgba(10, 15, 26, 0.1), rgba(10, 15, 26, 0.25));
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .hero-top {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(107, 29, 60, 0.3);
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.2s backwards;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+        }
+
+        .hero h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2rem, 5vw, 4rem);
+            line-height: 0.95;
+            letter-spacing: 2px;
+            margin-bottom: 0.75rem;
+            background: linear-gradient(135deg, #e8eef3 0%, #c8d0d8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 1s ease-out 0.4s backwards;
+            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.8));
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            color: var(--text-light);
+            max-width: 800px;
+            margin: -0.5in auto 0;
+            line-height: 1.6;
+            font-weight: 300;
+            animation: fadeInUp 1s ease-out 0.6s backwards;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 0.8s backwards;
+            padding-bottom: 2rem;
+        }
+
+        .btn {
+            padding: 1.2rem 2.5rem;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--accent-burgundy);
+            color: white;
+            box-shadow: 0 10px 30px rgba(107, 29, 60, 0.4);
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(107, 29, 60, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-light);
+            border: 2px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(200, 208, 216, 0.15);
+            border-color: var(--accent-chrome);
+            transform: translateY(-2px);
+        }
+
+        /* Search Filter Section */
+        .search-section {
+            background: var(--secondary-dark);
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .search-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-chrome), transparent);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .search-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            letter-spacing: 2px;
+            color: var(--accent-chrome);
+            text-transform: uppercase;
+        }
+
+        .search-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .search-field {
+            position: relative;
+        }
+
+        .search-field label {
+            display: block;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            color: var(--text-gray);
+        }
+
+        .search-field select,
+        .search-field input {
+            width: 100%;
+            padding: 1rem;
+            background: var(--primary-dark);
+            border: 1px solid var(--border-color);
+            color: var(--text-light);
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-field select:focus,
+        .search-field input:focus {
+            outline: none;
+            border-color: var(--accent-burgundy);
+            box-shadow: 0 0 0 3px rgba(107, 29, 60, 0.2);
+        }
+
+        .search-btn-container {
+            text-align: center;
+        }
+
+        .btn-search {
+            background: var(--accent-chrome);
+            color: var(--primary-dark);
+            padding: 1.2rem 3rem;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(200, 208, 216, 0.3);
+        }
+
+        .btn-search:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(200, 208, 216, 0.4);
+            background: var(--accent-silver);
+        }
+
+        /* Featured Inventory */
+        .featured-section {
+            padding: 6rem 2rem;
+            background: var(--primary-dark);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--accent-burgundy);
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #e8eef3 0%, #c8d0d8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .inventory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .car-card {
+            background: var(--secondary-dark);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            position: relative;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .car-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(107, 29, 60, 0.1), rgba(200, 208, 216, 0.1));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .car-card:hover::before {
+            opacity: 1;
+        }
+
+        .car-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-chrome);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .car-image {
+            width: 100%;
+            height: 250px;
+            background: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .car-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .car-card:hover .car-image img {
+            transform: scale(1.1);
+        }
+
+        .car-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: var(--accent-burgundy);
+            color: white;
+            padding: 0.4rem 1rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            z-index: 1;
+        }
+
+        .car-info {
+            padding: 2rem;
+        }
+
+        .car-name {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .car-specs {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--text-gray);
+        }
+
+        .car-spec {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .car-price {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            color: var(--accent-chrome);
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-view {
+            width: 100%;
+            background: transparent;
+            color: var(--text-light);
+            border: 2px solid var(--border-color);
+            padding: 1rem;
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-view:hover {
+            background: var(--accent-burgundy);
+            border-color: var(--accent-burgundy);
+            color: white;
+        }
+
+        .view-all-container {
+            text-align: center;
+        }
+
+        /* USP Section */
+        .usp-section {
+            background: var(--secondary-dark);
+            padding: 5rem 2rem;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .usp-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(107, 29, 60, 0.15), transparent 70%);
+            pointer-events: none;
+        }
+
+        .usp-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .usp-card {
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .usp-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 2rem;
+            background: linear-gradient(135deg, var(--accent-burgundy), var(--accent-chrome));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            box-shadow: 0 10px 30px rgba(107, 29, 60, 0.4);
+        }
+
+        .usp-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .usp-description {
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+
+        /* Trust Section */
+        .trust-section {
+            padding: 6rem 2rem;
+            background: var(--primary-dark);
+        }
+
+        .trust-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .trust-image {
+            width: 100%;
+            height: 500px;
+            background: var(--secondary-dark);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .trust-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(107, 29, 60, 0.2), rgba(200, 208, 216, 0.2));
+        }
+
+        .trust-text h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            letter-spacing: 2px;
+            margin-bottom: 2rem;
+            line-height: 1.1;
+        }
+
+        .trust-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .trust-list li {
+            padding: 1rem 0;
+            padding-left: 2rem;
+            position: relative;
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .trust-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent-burgundy);
+            font-weight: bold;
+        }
+
+        /* CTA Ribbon */
+        .cta-ribbon {
+            background: linear-gradient(135deg, var(--accent-burgundy), var(--warm-brick));
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-ribbon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255, 255, 255, 0.05) 10px, rgba(255, 255, 255, 0.05) 20px);
+        }
+
+        .cta-ribbon-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-ribbon h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: white;
+            margin-bottom: 2rem;
+            letter-spacing: 2px;
+        }
+
+        .cta-ribbon-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-cta {
+            background: white;
+            color: var(--primary-dark);
+            padding: 1.2rem 2.5rem;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--secondary-dark);
+            padding: 4rem 2rem 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-chrome);
+            letter-spacing: 1px;
+        }
+
+        .footer-info p {
+            color: var(--text-gray);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .phone-large {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2rem;
+            color: var(--accent-burgundy);
+            text-decoration: none;
+            display: block;
+            margin: 1rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .phone-large:hover {
+            color: var(--accent-chrome);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 1rem;
+            background: var(--primary-dark);
+            border: 1px solid var(--border-color);
+            color: var(--text-light);
+            font-family: 'Outfit', sans-serif;
+            transition: border-color 0.3s ease;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--accent-burgundy);
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn-submit {
+            background: var(--accent-burgundy);
+            color: white;
+            padding: 1rem;
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background: var(--warm-brick);
+        }
+
+        .map-container {
+            width: 100%;
+            height: 300px;
+            background: var(--primary-dark);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-gray);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .trust-content {
+                grid-template-columns: 1fr;
+            }
+
+            .trust-image {
+                height: 300px;
+            }
+
+            .search-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .inventory-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .usp-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll reveal animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-top">
+                <div class="hero-badge">Premium Automotive Excellence</div>
+                <h1>Find Your Drive,<br>Backed by Our Promise</h1>
+            </div>
+            <div>
+                <p class="hero-subtitle">Duke's Garage: Your Destination for Certified Pre-Owned, New Arrivals, & Electric Vehicles. Every Car Includes Our Signature Warranty.</p>
+                <div class="cta-group">
+                    <a href="#inventory" class="btn btn-primary">Browse Our Inventory</a>
+                    <a href="#contact" class="btn btn-secondary">Get Pre-Approved</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Filter Section -->
+    <section class="search-section" id="search">
+        <div class="container">
+            <h2 class="search-title">Find Your Perfect Vehicle</h2>
+            <div class="search-grid">
+                <div class="search-field">
+                    <label>Vehicle Type</label>
+                    <select>
+                        <option>All Types</option>
+                        <option>New</option>
+                        <option>Certified Pre-Owned</option>
+                        <option>Used</option>
+                    </select>
+                </div>
+                <div class="search-field">
+                    <label>Body Style</label>
+                    <select>
+                        <option>All Styles</option>
+                        <option>SUV</option>
+                        <option>Truck</option>
+                        <option>Sedan</option>
+                        <option>Coupe</option>
+                        <option>Electric</option>
+                    </select>
+                </div>
+                <div class="search-field">
+                    <label>Price Range</label>
+                    <select>
+                        <option>All Prices</option>
+                        <option>Under $20,000</option>
+                        <option>$20,000 - $35,000</option>
+                        <option>$35,000 - $50,000</option>
+                        <option>$50,000+</option>
+                    </select>
+                </div>
+                <div class="search-field">
+                    <label>Year</label>
+                    <select>
+                        <option>All Years</option>
+                        <option>2024-2025</option>
+                        <option>2022-2023</option>
+                        <option>2020-2021</option>
+                        <option>2018-2019</option>
+                    </select>
+                </div>
+            </div>
+            <div class="search-btn-container">
+                <button class="btn-search">Search Inventory</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Inventory Section -->
+    <section class="featured-section reveal" id="inventory">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Handpicked Selection</div>
+                <h2 class="section-title">Curated For You</h2>
+            </div>
+            <div class="inventory-grid">
+                <div class="car-card">
+                    <div class="car-image">
+                        <!-- <div class="car-badge">Luxury</div>
+                        <div style="font-size: 4rem; color: var(--accent-gold);">🚗</div> -->
+                        <div class="car-badge">Luxury</div>
+                     <img src="images/mercedes.jpg" alt="2024 BMW X5 M Sport">
+                    </div>
+                    <div class="car-info">
+                        <h3 class="car-name">2023 Mercedes-Benz C300</h3>
+                        <div class="car-specs">
+                            <div class="car-spec">📅 2024</div>
+                            <div class="car-spec">🛣️ 12,500 mi</div>
+                        </div>
+                        <div class="car-price">$68,900</div>
+                        <button class="btn-view">View Details</button>
+                    </div>
+                </div>
+
+                <div class="car-card">
+                    <div class="car-image">
+                        <div class="car-badge">Family</div>
+                    <img src="images/mercedes1.jpg" alt="2023 Honda Pilot Elite">
+
+                    </div>
+                    <div class="car-info">
+                        <h3 class="car-name">2023 Honda Pilot Elite</h3>
+                        <div class="car-specs">
+                            <div class="car-spec">📅 2023</div>
+                            <div class="car-spec">🛣️ 28,400 mi</div>
+                        </div>
+                        <div class="car-price">$42,500</div>
+                        <button class="btn-view">View Details</button>
+                    </div>
+                </div>
+
+                <div class="car-card">
+                    <div class="car-image">
+                        <div class="car-badge">Certified</div>
++                        <img src="images/Camry.jpg" alt="2023 Toyota Camry XLE">
+                    </div>
+                    <div class="car-info">
+                        <h3 class="car-name">2023 Toyota Camry XLE</h3>
+                        <div class="car-specs">
+                            <div class="car-spec">📅 2023</div>
+                            <div class="car-spec">🛣️ 19,800 mi</div>
+                        </div>
+                        <div class="car-price">$29,900</div>
+                        <button class="btn-view">View Details</button>
+                    </div>
+                </div>
+
+                <div class="car-card">
+                    <div class="car-image">
+                        <div class="car-badge">Electric</div>
++                       <img src="images/Tesla1.jpg" alt="2024 Tesla Model Y">
+
+                    </div>
+                    <div class="car-info">
+                        <h3 class="car-name">2024 Tesla Model Y</h3>
+                        <div class="car-specs">
+                            <div class="car-spec">📅 2024</div>
+                            <div class="car-spec">🛣️ 8,200 mi</div>
+                        </div>
+                        <div class="car-price">$52,900</div>
+                        <button class="btn-view">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <div class="view-all-container">
+                <a href="#inventory" class="btn btn-primary">View All Inventory</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- USP Section -->
+    <section class="usp-section reveal">
+        <div class="container">
+            <div class="usp-grid">
+                <div class="usp-card">
+                    <div class="usp-icon">🛡️</div>
+                    <h3 class="usp-title">The Duke's Warranty</h3>
+                    <p class="usp-description">Every vehicle certified and warranted. Drive with complete confidence knowing you're protected.</p>
+                </div>
+                <div class="usp-card">
+                    <div class="usp-icon">⚡</div>
+                    <h3 class="usp-title">The Future is Here</h3>
+                    <p class="usp-description">Explore our exclusive Electric Vehicle Hub with expert guidance and charging solutions.</p>
+                </div>
+                <div class="usp-card">
+                    <div class="usp-icon">🔑</div>
+                    <h3 class="usp-title">Your Journey, Simplified</h3>
+                    <p class="usp-description">Financing and trade-ins made easy. We handle the paperwork, you enjoy the ride.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section class="trust-section reveal">
+        <div class="container">
+            <div class="trust-content">
+                <div class="trust-image">
+                    <div style="font-size: 8rem; opacity: 0.3;">🤝</div>
+                </div>
+                <div class="trust-text">
+                    <h2>Why Duke's Garage?</h2>
+                    <ul class="trust-list">
+                        <li>Family-Owned & Customer-Focused Since Day One</li>
+                        <li>Transparent, No-Pressure Pricing Philosophy</li>
+                        <li>Wide Selection for Every Need & Budget</li>
+                        <li>Serving the Greater Region with Pride for Over 15 Years</li>
+                        <li>Expert Team Committed to Your Satisfaction</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary">Meet Our Team</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Ribbon -->
+    <section class="cta-ribbon">
+        <div class="cta-ribbon-content">
+            <h2>Ready to Find Your Perfect Car?</h2>
+            <div class="cta-ribbon-buttons">
+                <a href="#contact" class="btn-cta">Schedule a Test Drive</a>
+                <a href="#contact" class="btn-cta">Contact Our Team</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Duke's Garage</h3>
+                    <div class="footer-info">
+                        <p>📍 123 Motor Avenue<br>Your City, ST 12345</p>
+                        <a href="tel:5551234567" class="phone-large">(555) 123-4567</a>
+                        <p><strong>Hours:</strong><br>
+                        Mon-Fri: 9:00 AM - 7:00 PM<br>
+                        Saturday: 9:00 AM - 6:00 PM<br>
+                        Sunday: 11:00 AM - 5:00 PM</p>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Send Us a Message</h3>
+                    <form class="contact-form">
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <input type="tel" placeholder="Phone Number" required>
+                        <textarea placeholder="Your Message" required></textarea>
+                        <button type="submit" class="btn-submit">Send Message</button>
+                    </form>
+                </div>
+                <div class="footer-section">
+                    <h3>Visit Us</h3>
+                    <div class="map-container">
+                        <p>📍 Google Maps Embed Here</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Duke's Garage. All rights reserved. | Built with pride and precision.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll reveal animation
+        const reveals = document.querySelectorAll('.reveal');
+        
+        function checkReveal() {
+            reveals.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', checkReveal);
+        checkReveal(); // Check on load
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Search form interaction
+        document.querySelector('.btn-search').addEventListener('click', function() {
+            alert('Search functionality would connect to your inventory database here!');
+        });
+
+        // Contact form submission
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We\'ll be in touch soon.');
+            this.reset();
+        });
+
+        // View details buttons
+        document.querySelectorAll('.btn-view').forEach(button => {
+            button.addEventListener('click', function() {
+                alert('This would link to the detailed vehicle page!');
+            });
+        });
+    </script>
+</body>
+</html>
